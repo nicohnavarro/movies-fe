@@ -15,6 +15,7 @@ import { Movie } from '../../models/movie.model';
 export class LocationsComponent {
   movies: Movie[] = [];
   selectedMovie: Movie | null = null;
+  isSidebarCollapsed = false;
 
   constructor(private movieService: MovieService) {}
 
@@ -26,5 +27,9 @@ export class LocationsComponent {
 
   onMovieSelected(movie: Movie) {
     this.selectedMovie = movie;
+  }
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 }

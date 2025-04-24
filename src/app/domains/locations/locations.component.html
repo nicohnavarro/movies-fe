@@ -1,4 +1,11 @@
 <div class="layout">
-  <app-sidebar-search [movies]="movies" [selectedMovie]="selectedMovie" (movieClicked)="onMovieSelected($event)" />
+  <div class="sidebar-container" [class.collapsed]="isSidebarCollapsed">
+    <button class="collapse-button" (click)="toggleSidebar()">
+      <span class="material-icons">
+        {{ isSidebarCollapsed ? 'chevron_right' : 'chevron_left' }}
+      </span>
+    </button>
+    <app-sidebar-search [movies]="movies" [selectedMovie]="selectedMovie" (movieClicked)="onMovieSelected($event)" />
+  </div>
   <app-dynamic-map [movies]="movies" [selectedMovie]="selectedMovie" (movieSelected)="onMovieSelected($event)" />
 </div>

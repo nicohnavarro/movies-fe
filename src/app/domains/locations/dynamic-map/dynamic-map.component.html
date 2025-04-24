@@ -10,12 +10,20 @@
       [position]="{ lat: movie.lat, lng: movie.lng }"
       [title]="movie.title"
       [icon]="getMarkerIcon(movie)"
-      (mapClick)="selectMovie(movie)">
+      (mapClick)="openInfoWindow(marker, movie)"
+      #marker="mapMarker">
     </map-marker>
 
-    <map-info-window *ngIf="selectedMovie" #infoWindow>
-      <strong>{{ selectedMovie.title }}</strong><br />
-      <small>{{ selectedMovie.location }}</small>
+    <map-info-window>
+      <div *ngIf="selectedMovie" class="info-window-content">
+        <h2 class="movie-title">{{ selectedMovie.title }}</h2>
+        <p class="movie-location">{{ selectedMovie.location }}</p>
+        <div class="movie-details">
+          <p><strong>Year:</strong> {{ selectedMovie.release_year }}</p>
+          <p><strong>Director:</strong> {{ selectedMovie.director }}</p>
+          <p *ngIf="selectedMovie.fun_facts"><strong>Fun Facts:</strong> {{ selectedMovie.fun_facts }}</p>
+        </div>
+      </div>
     </map-info-window>
   </google-map>
 </div>

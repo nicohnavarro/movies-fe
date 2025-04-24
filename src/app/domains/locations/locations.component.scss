@@ -1,13 +1,46 @@
 .layout {
   display: flex;
-  height: calc(100vh - 120px); // Subtract navbar and footer height
+  height: calc(100vh - 120px);
   background-color: #f8f9fa;
   gap: 1px;
   position: relative;
-  overflow: hidden;
   
-  app-sidebar-search {
+  .sidebar-container {
+    position: relative;
     width: 350px;
+    transition: width 0.3s ease;
+    
+    &.collapsed {
+      width: 0;
+    }
+    
+    .collapse-button {
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 40px;
+      background: white;
+      border: 1px solid #ddd;
+      border-left: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+      box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+      
+      &:hover {
+        background: #f5f5f5;
+      }
+      
+      .material-icons {
+        font-size: 18px;
+        color: #666;
+      }
+    }
   }
   
   app-dynamic-map {
