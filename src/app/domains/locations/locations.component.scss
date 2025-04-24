@@ -1,0 +1,17 @@
+.layout {
+  display: flex;
+  flex: 1;
+  width: 100%;
+}
+
+app-sidebar-search {
+  width: 430px;
+  height: calc(100vh - 110px);
+  background: #f8faff;
+}
+
+.map-content {
+  flex: 1;
+  padding: 1rem;
+  min-height: 0;
+}

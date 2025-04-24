@@ -1,0 +1,16 @@
+<aside class="sidebar">
+  <mat-form-field appearance="outline" class="full-width">
+    <input
+      matInput
+      [formControl]="searchControl"
+      placeholder="Search movies (min. 3 chars)"
+      autocomplete="off" />
+  </mat-form-field>
+
+  <ul class="movie-list">
+    <li *ngFor="let movie of filteredMovies()">
+      <strong>{{ movie.title }}</strong><br />
+      <small>{{ movie.release_year }} — {{ movie.location }}</small>
+    </li>
+  </ul>
+</aside>
