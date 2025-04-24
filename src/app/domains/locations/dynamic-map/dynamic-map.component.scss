@@ -1,0 +1,16 @@
+.map-wrapper {
+  height: 100%;
+  width: 100vw;
+  
+  google-map {
+    height: 100%;
+    width: 100%;
+  }
+  
+  ::ng-deep {
+    .map-container {
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

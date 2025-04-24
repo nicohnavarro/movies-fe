@@ -1,6 +1,6 @@
 import { Movie } from "../models/movie.model";
 
-export const MockMovies: Partial<Movie>[] = [
+export const MockMovies: Movie[] = [
   {
     title: 'Always Be My Maybe',
     release_year: 2019,

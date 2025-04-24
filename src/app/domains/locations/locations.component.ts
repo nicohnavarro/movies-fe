@@ -1,22 +1,30 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { SidebarSearchComponent } from './sidebar-search/sidebar-search.component';
+import { DynamicMapComponent } from './dynamic-map/dynamic-map.component';
 import { MovieService } from '../../services/movie.service';
 import { Movie } from '../../models/movie.model';
-import { SidebarSearchComponent } from './sidebar-search/sidebar-search.component';
 
 @Component({
   selector: 'app-locations',
-  imports: [SidebarSearchComponent],
+  standalone: true,
+  imports: [CommonModule, SidebarSearchComponent, DynamicMapComponent],
   templateUrl: './locations.component.html',
-  styleUrl: './locations.component.scss'
+  styleUrls: ['./locations.component.scss']
 })
 export class LocationsComponent {
-constructor(private movieService: MovieService) {}
-movies: Partial<Movie>[] = [];
+  movies: Movie[] = [];
+  selectedMovie: Movie | null = null;
 
-ngOnInit(): void {
-  this.movieService.getMovies().subscribe(data => {
-    this.movies = data;
-    console.log(this.movies)
-  });
-}
+  constructor(private movieService: MovieService) {}
+
+  ngOnInit(): void {
+    this.movieService.getMovies().subscribe(data => {
+      this.movies = data;
+    });
+  }
+
+  onMovieSelected(movie: Movie) {
+    this.selectedMovie = movie;
+  }
 }

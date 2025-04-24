@@ -1,0 +1,21 @@
+<div class="map-wrapper">
+  <google-map
+    height="100%"
+    width="100%"
+    [center]="mapCenter"
+    [zoom]="zoom">
+    
+    <map-marker
+      *ngFor="let movie of movies"
+      [position]="{ lat: movie.lat, lng: movie.lng }"
+      [title]="movie.title"
+      [icon]="getMarkerIcon(movie)"
+      (mapClick)="selectMovie(movie)">
+    </map-marker>
+
+    <map-info-window *ngIf="selectedMovie" #infoWindow>
+      <strong>{{ selectedMovie.title }}</strong><br />
+      <small>{{ selectedMovie.location }}</small>
+    </map-info-window>
+  </google-map>
+</div>

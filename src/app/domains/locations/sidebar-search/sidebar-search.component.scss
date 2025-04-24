@@ -1,33 +1,45 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  width: 430px;
-  background: #f8faff;
-  border-right: 1px solid #e0e0e0;
+  height: 100%;
   padding: 1rem;
-  height: calc(100vh - 110px);
-
+  
   .full-width {
     width: 100%;
     margin-bottom: 1rem;
   }
-
+  
   .movie-list {
-    flex: 1;
-    overflow-y: auto;
-    margin: 0;
-    padding: 0;
     list-style: none;
-
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex: 1;
+    
     li {
-      padding: 0.5rem 0;
-      border-bottom: 1px solid #ddd;
-      font-size: 0.9rem;
-
+      padding: 1rem;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      
       &:hover {
-        cursor: pointer;
-        background-color: #f0f0f0;
-        transition: background-color 0.3s;
+        background-color: #f8f9fa;
+      }
+      
+      &.selected {
+        background-color: #e3f2fd;
+        border-left: 4px solid #2196f3;
+      }
+      
+      strong {
+        display: block;
+        margin-bottom: 0.25rem;
+        color: #333;
+      }
+      
+      small {
+        color: #666;
+        font-size: 0.875rem;
       }
     }
   }

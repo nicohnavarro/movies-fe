@@ -16,7 +16,7 @@ export class MovieService {
   // }
 
   // For now: mock data
- getMovies(): Observable<Partial<Movie>[]> {
+ getMovies(): Observable<Movie[]> {
   return of(MockMovies);
 }
 }

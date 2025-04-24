@@ -1,6 +1,4 @@
 <div class="layout">
-  <app-sidebar-search [movies]="movies" />
-  <div class="map-content">
-    <!-- mapa o contenido -->
-  </div>
+  <app-sidebar-search [movies]="movies" [selectedMovie]="selectedMovie" (movieClicked)="onMovieSelected($event)" />
+  <app-dynamic-map [movies]="movies" [selectedMovie]="selectedMovie" (movieSelected)="onMovieSelected($event)" />
 </div>

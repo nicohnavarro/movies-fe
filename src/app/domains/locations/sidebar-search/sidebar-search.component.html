@@ -8,7 +8,10 @@
   </mat-form-field>
 
   <ul class="movie-list">
-    <li *ngFor="let movie of filteredMovies()">
+    <li
+      *ngFor="let movie of filteredMovies()"
+      (click)="onClickMovie(movie)"
+      [class.selected]="selectedMovie?.title === movie.title">
       <strong>{{ movie.title }}</strong><br />
       <small>{{ movie.release_year }} — {{ movie.location }}</small>
     </li>

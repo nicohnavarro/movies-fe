@@ -1,17 +1,20 @@
 .layout {
   display: flex;
-  flex: 1;
-  width: 100%;
-}
-
-app-sidebar-search {
-  width: 430px;
-  height: calc(100vh - 110px);
-  background: #f8faff;
-}
-
-.map-content {
-  flex: 1;
-  padding: 1rem;
-  min-height: 0;
+  height: calc(100vh - 120px); // Subtract navbar and footer height
+  background-color: #f8f9fa;
+  gap: 1px;
+  position: relative;
+  overflow: hidden;
+  
+  app-sidebar-search {
+    width: 350px;
+  }
+  
+  app-dynamic-map {
+    flex: 1;
+    background-color: white;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+  }
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DinamicMapComponent } from './dinamic-map.component';
+import { DynamicMapComponent } from './dynamic-map.component';
 
-describe('DinamicMapComponent', () => {
-  let component: DinamicMapComponent;
-  let fixture: ComponentFixture<DinamicMapComponent>;
+describe('DynamicMapComponent', () => {
+  let component: DynamicMapComponent;
+  let fixture: ComponentFixture<DynamicMapComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DinamicMapComponent]
+      imports: [DynamicMapComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(DinamicMapComponent);
+    fixture = TestBed.createComponent(DynamicMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
