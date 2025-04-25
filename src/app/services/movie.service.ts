@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class MovieService {
   private baseUrl = environment.production 
     ? `https://${environment.apiUrl}/api/v1/movie`
-    : `/api/api/v1/movie`;
+    : `/api/v1/movie`;
   private apiCode = 'TjS7VvG0TPUArvIkkhX-PMYOjzUdZtOlLiogWAUgqziOAzFuOdBpaQ==';
 
   constructor(private http: HttpClient) {}

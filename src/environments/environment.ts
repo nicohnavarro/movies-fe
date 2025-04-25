@@ -1,5 +1,5 @@
 export const environment = {
   production: false,
   apiUrl: 'movies-kindalab.azurewebsites.net',
-  apiKey: ''
+  apiCode: 'YOUR_API_CODE_HERE'
 }; 
