@@ -24,6 +24,7 @@ export class SidebarSearchComponent implements OnInit {
   @Input() movies: Movie[] = [];
   @Input() selectedMovie: Movie | null = null;
   @Output() movieClicked = new EventEmitter<Movie>();
+  @Output() moviesFiltered = new EventEmitter<Movie[]>();
 
   searchControl = new FormControl('');
   filteredMovies = signal<Movie[]>([]);
@@ -31,18 +32,22 @@ export class SidebarSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.fuse = new Fuse(this.movies, {
-      keys: ['title', 'location', 'analysis_neighborhood'],
+      keys: ['title', 'locations', 'analysisNeighborhood'],
       threshold: 0.3,
     });
 
     this.filteredMovies.set(this.movies);
+    this.moviesFiltered.emit(this.movies);
 
     this.searchControl.valueChanges.pipe(debounceTime(300)).subscribe(query => {
       if (query && query.length >= 3) {
         const results = this.fuse.search(query);
-        this.filteredMovies.set(results.map(r => r.item));
+        const filtered = results.map(r => r.item);
+        this.filteredMovies.set(filtered);
+        this.moviesFiltered.emit(filtered);
       } else {
         this.filteredMovies.set(this.movies);
+        this.moviesFiltered.emit(this.movies);
       }
     });
   }

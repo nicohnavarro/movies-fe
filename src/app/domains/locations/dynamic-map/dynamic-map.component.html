@@ -7,7 +7,7 @@
     
     <map-marker
       *ngFor="let movie of movies"
-      [position]="{ lat: movie.lat, lng: movie.lng }"
+      [position]="{ lat: movie.latitude, lng: movie.longitude }"
       [title]="movie.title"
       [icon]="getMarkerIcon(movie)"
       (mapClick)="openInfoWindow(marker, movie)"
@@ -17,11 +17,11 @@
     <map-info-window>
       <div *ngIf="selectedMovie" class="info-window-content">
         <h2 class="movie-title">{{ selectedMovie.title }}</h2>
-        <p class="movie-location">{{ selectedMovie.location }}</p>
+        <p class="movie-location">{{ selectedMovie.locations}}</p>
         <div class="movie-details">
-          <p><strong>Year:</strong> {{ selectedMovie.release_year }}</p>
+          <p><strong>Year:</strong> {{ selectedMovie.releaseYear }}</p>
           <p><strong>Director:</strong> {{ selectedMovie.director }}</p>
-          <p *ngIf="selectedMovie.fun_facts"><strong>Fun Facts:</strong> {{ selectedMovie.fun_facts }}</p>
+          <p *ngIf="selectedMovie.funFacts"><strong>Fun Facts:</strong> {{ selectedMovie.funFacts }}</p>
         </div>
       </div>
     </map-info-window>

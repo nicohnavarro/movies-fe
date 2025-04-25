@@ -14,6 +14,7 @@ import { Movie } from '../../models/movie.model';
 })
 export class LocationsComponent {
   movies: Movie[] = [];
+  filteredMovies: Movie[] = [];
   selectedMovie: Movie | null = null;
   isSidebarCollapsed = false;
 
@@ -21,12 +22,17 @@ export class LocationsComponent {
 
   ngOnInit(): void {
     this.movieService.getMovies().subscribe(data => {
-      this.movies = data;
+      this.movies = data.movies;
+      this.filteredMovies = data.movies;
     });
   }
 
   onMovieSelected(movie: Movie) {
     this.selectedMovie = movie;
+  }
+
+  onMoviesFiltered(filteredMovies: Movie[]) {
+    this.filteredMovies = filteredMovies;
   }
 
   toggleSidebar() {

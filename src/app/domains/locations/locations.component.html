@@ -5,7 +5,14 @@
         {{ isSidebarCollapsed ? 'chevron_right' : 'chevron_left' }}
       </span>
     </button>
-    <app-sidebar-search [movies]="movies" [selectedMovie]="selectedMovie" (movieClicked)="onMovieSelected($event)" />
+    <app-sidebar-search 
+      [movies]="movies" 
+      [selectedMovie]="selectedMovie" 
+      (movieClicked)="onMovieSelected($event)"
+      (moviesFiltered)="onMoviesFiltered($event)" />
   </div>
-  <app-dynamic-map [movies]="movies" [selectedMovie]="selectedMovie" (movieSelected)="onMovieSelected($event)" />
+  <app-dynamic-map 
+    [movies]="filteredMovies" 
+    [selectedMovie]="selectedMovie" 
+    (movieSelected)="onMovieSelected($event)" />
 </div>

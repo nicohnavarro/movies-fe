@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Movie } from '../models/movie.model';
-import { MockMovies } from './mock-movies';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+  private apiUrl = `${environment.apiUrl}/api/GetMovies?code=${environment.apiKey}`;
+
   constructor(private http: HttpClient) {}
 
-  // Future real API call
-  // getMovies(): Observable<any[]> {
-  //   return this.http.get<any[]>('/api/movies');
-  // }
-
-  // For now: mock data
- getMovies(): Observable<Movie[]> {
-  return of(MockMovies);
-}
+  getMovies(): Observable<{ totalRecords: number; movies: Movie[] }> {
+    return this.http.get<{ totalRecords: number; movies: Movie[] }>(`https://${this.apiUrl}`).pipe(
+      map(response => ({
+        totalRecords: response.totalRecords,
+        movies: response.movies.filter(movie => movie.latitude !== null && movie.longitude !== null)
+      }))
+    );
+  }
 }

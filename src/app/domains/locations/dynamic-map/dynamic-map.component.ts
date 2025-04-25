@@ -37,8 +37,8 @@ export class DynamicMapComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnInit() {
     if (this.selectedMovie) {
       this.mapCenter = { 
-        lat: this.selectedMovie.lat!, 
-        lng: this.selectedMovie.lng! 
+        lat: this.selectedMovie.latitude!, 
+        lng: this.selectedMovie.longitude! 
       };
     }
   }
@@ -52,7 +52,7 @@ export class DynamicMapComponent implements OnInit, OnChanges, AfterViewInit {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['selectedMovie']?.currentValue) {
       const movie = changes['selectedMovie'].currentValue as Movie;
-      this.mapCenter = { lat: movie.lat!, lng: movie.lng! };
+      this.mapCenter = { lat: movie.latitude!, lng: movie.longitude! };
       this.tryOpenInfoWindow();
     }
   }
