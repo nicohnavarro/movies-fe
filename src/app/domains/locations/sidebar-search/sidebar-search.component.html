@@ -1,5 +1,5 @@
-<aside class="sidebar">
-  <mat-form-field appearance="outline" class="full-width">
+<div class="search-container">
+  <mat-form-field appearance="outline" class="search-input">
     <input
       matInput
       [formControl]="searchControl"
@@ -7,13 +7,25 @@
       autocomplete="off" />
   </mat-form-field>
 
-  <ul class="movie-list">
-    <li
-      *ngFor="let movie of filteredMovies()"
-      (click)="onClickMovie(movie)"
-      [class.selected]="selectedMovie?.title === movie.title">
-      <strong>{{ movie.title }}</strong><br />
-      <small>{{ movie.releaseYear }} — {{ movie.locations }}</small>
-    </li>
-  </ul>
-</aside>
+  <div class="search-info" *ngIf="searchControl.value && searchControl.value.length >= 3">
+    <p>Found {{ filteredMovies.length }} movies</p>
+  </div>
+
+  <div class="movies-list">
+    <div class="no-results" *ngIf="filteredMovies.length === 0">
+      <span class="material-icons">search_off</span>
+      <p>No results found</p>
+    </div>
+    <ul class="movie-list" *ngIf="filteredMovies.length > 0">
+      <li
+        *ngFor="let movie of filteredMovies"
+        (click)="onClickMovie(movie)"
+        [class.selected]="selectedMovie?.title === movie.title"
+        [class.no-coordinates]="!movie.latitude || !movie.longitude">
+        <strong>{{ movie.title }}</strong><br />
+        <small>{{ movie.releaseYear }} — {{ movie.locations }}</small>
+        <span class="no-coordinates-badge" *ngIf="!movie.latitude || !movie.longitude">No location</span>
+      </li>
+    </ul>
+  </div>
+</div>
