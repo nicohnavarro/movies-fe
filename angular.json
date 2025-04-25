@@ -69,11 +69,12 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
+            "development": {
+              "buildTarget": "sf-movie-map:build:development",
+              "proxyConfig": "proxy.conf.json"
+            },
             "production": {
               "buildTarget": "sf-movie-map:build:production"
-            },
-            "development": {
-              "buildTarget": "sf-movie-map:build:development"
             }
           },
           "defaultConfiguration": "development"

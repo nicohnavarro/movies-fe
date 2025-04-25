@@ -5,11 +5,29 @@
         {{ isSidebarCollapsed ? 'chevron_right' : 'chevron_left' }}
       </span>
     </button>
-    <app-sidebar-search 
-      [movies]="movies" 
-      [selectedMovie]="selectedMovie" 
-      (movieClicked)="onMovieSelected($event)"
-      (moviesFiltered)="onMoviesFiltered($event)" />
+    <div class="sidebar-content">
+      <app-sidebar-search 
+        #sidebarSearch
+        [movies]="movies" 
+        [selectedMovie]="selectedMovie" 
+        (movieClicked)="onMovieSelected($event)"
+        (moviesFiltered)="onMoviesFiltered($event)"
+        (totalCountChanged)="onTotalCountChanged($event)"
+        (searchStateChanged)="onSearchStateChanged($event)" />
+      <div class="loading-container" *ngIf="isLoading">
+        <mat-spinner diameter="30"></mat-spinner>
+      </div>
+      <div class="pagination-container" *ngIf="!isSearching">
+        <mat-paginator
+          [length]="totalCount"
+          [pageSize]="pageSize"
+          [pageSizeOptions]="pageSizeOptions"
+          [pageIndex]="currentPage"
+          (page)="onPageChange($event)"
+          aria-label="Select page">
+        </mat-paginator>
+      </div>
+    </div>
   </div>
   <app-dynamic-map 
     [movies]="filteredMovies" 

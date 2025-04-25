@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { RouterOutlet } from '@angular/router';
-import { LocationsComponent } from './domains/locations/locations.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,SharedModule,LocationsComponent ],
+  imports: [RouterOutlet,SharedModule ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

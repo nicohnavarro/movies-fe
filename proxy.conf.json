@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://movies-kindalab.azurewebsites.net",
+    "secure": true,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
+  }
+} 
