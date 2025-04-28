@@ -42,14 +42,11 @@ export class MovieService {
     );
   }
 
-  searchMovies(term: string, pageNumber: number = 1, pageSize: number = 10): Observable<{ totalCount: number; movies: Movie[] }> {
+  searchMovies(term: string): Observable<{ totalCount: number; movies: Movie[] }> {
     const params = this.getParams(
-      new HttpParams()
-        .set('term', term)
-        .set('pageNumber', pageNumber.toString())
-        .set('pageSize', pageSize.toString())
+      new HttpParams().set('term', term)
     );
-    
+
     return this.http.get<{ totalCount: number; movies: Movie[] }>(`${this.baseUrl}/search`, { params }).pipe(
       map(response => ({
         totalCount: response.totalCount,

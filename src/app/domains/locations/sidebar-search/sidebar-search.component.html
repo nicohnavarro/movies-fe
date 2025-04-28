@@ -20,7 +20,7 @@
       <li
         *ngFor="let movie of filteredMovies"
         (click)="onClickMovie(movie)"
-        [class.selected]="selectedMovie?.title === movie.title"
+        [class.selected]="selectedMovie?.locations === movie.locations"
         [class.no-coordinates]="!movie.latitude || !movie.longitude">
         <strong>{{ movie.title }}</strong><br />
         <small>{{ movie.releaseYear }} — {{ movie.locations }}</small>

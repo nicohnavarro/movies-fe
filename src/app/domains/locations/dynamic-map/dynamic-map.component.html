@@ -6,8 +6,8 @@
     [zoom]="zoom">
     
     <map-marker
-      *ngFor="let movie of movies"
-      [position]="{ lat: movie.latitude, lng: movie.longitude }"
+      *ngFor="let movie of movies | filter:hasValidCoordinates"
+      [position]="{ lat: movie.latitude!, lng: movie.longitude! }"
       [title]="movie.title"
       [icon]="getMarkerIcon(movie)"
       (mapClick)="openInfoWindow(marker, movie)"
@@ -22,6 +22,9 @@
           <p><strong>Year:</strong> {{ selectedMovie.releaseYear }}</p>
           <p><strong>Director:</strong> {{ selectedMovie.director }}</p>
           <p *ngIf="selectedMovie.funFacts"><strong>Fun Facts:</strong> {{ selectedMovie.funFacts }}</p>
+          <p *ngIf="!hasValidCoordinates(selectedMovie)" class="no-coordinates-warning">
+            <span class="material-icons">warning</span> No coordinates available
+          </p>
         </div>
       </div>
     </map-info-window>
